@@ -12,13 +12,14 @@
 #import "ASIFormDataRequest.h"
 #import "PFUserManager.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "GKImagePicker.h"
 
 @protocol PFAccountSettingViewControllerDelegate <NSObject>
 - (void)PFAccountSettingViewControllerBackTapped:(id)sender;
 - (void)PFAccountSettingViewControllerPhoto:(NSString *)link;
 @end
 
-@interface PFAccountSettingViewController : UIViewController <UIActionSheetDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+@interface PFAccountSettingViewController : UIViewController <GKImagePickerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UIView *formSetting;
 - (IBAction)backTapped:(id)sender;
@@ -56,4 +57,7 @@
 - (IBAction)editTapped:(id)sender;
 @property (retain, nonatomic) IBOutlet UIButton *editBut;
 @property (retain, nonatomic) NSString *imgLink;
+@property (nonatomic, strong) GKImagePicker *imagePicker;
+
+@property (nonatomic, strong) UIImagePickerController *ctr;
 @end

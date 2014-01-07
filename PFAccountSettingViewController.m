@@ -11,7 +11,7 @@
 #import "PFIndexViewController.h"
 #import "PFTabBarViewController.h"
 #import "SDImageCache.h"
-#import "GKImagePicker.h"
+
 @interface PFAccountSettingViewController ()
 
 @end
@@ -197,10 +197,27 @@ BOOL editMode;
          [self useCamera];
         [[UIBarButtonItem appearance] setTintColor:[UIColor blueColor]];
     } else if ( buttonIndex == 1 ) {
-        [self useCameraRoll];
+        //[self useCameraRoll];
+        cameraView = YES;
+        self.ctr = [[UIImagePickerController alloc] init];
+        self.ctr.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.ctr.delegate = self;
+        self.ctr.allowsEditing = YES;
+        
+
+        [self presentModalViewController:self.ctr animated:YES];
+        
         [[UIBarButtonItem appearance] setTintColor:[UIColor blueColor]];
     }
 }
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    self.profileImg.image = image;
+    [self hideImagePicker];
+}
+
+- (void)hideImagePicker{
+        [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+    }
 - (void) useCamera
 {
     cameraView = YES;
@@ -224,7 +241,6 @@ BOOL editMode;
 
 - (void) useCameraRoll
 {
-
     cameraView = YES;
     if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeSavedPhotosAlbum])
     {
@@ -240,6 +256,7 @@ BOOL editMode;
         newMedia = NO;
     }
 }
+/*
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -277,6 +294,39 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [request startAsynchronous];
         
     }
+}*/
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
+    image = [self squareImageWithImage:image scaledToSize:CGSizeMake(640, 640)];
+    self.profileImg.image = image;
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // Get username
+    NSString *uid = [defaults objectForKey:@"id"];
+    
+    [self.view addSubview:self.waitView];
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@user/%@/picture",API_URL,uid];
+    NSURL *url = [[NSURL alloc] initWithString:strUrl];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    NSString *filename1=[NSString stringWithFormat:@"picture.jpg"];
+    NSData *imageData1=UIImageJPEGRepresentation(image, 75);
+    [request addRequestHeader:@"X-Auth-Token" value:[defaults objectForKey:@"token"]];
+    [request setPostValue:uid forKey:@"uid"];
+    [request setData:imageData1 withFileName:filename1 andContentType:@"image/jpeg" forKey:@"picture"];
+    [request setRequestMethod:@"POST"];
+    [request setUploadProgressDelegate:self];
+    //[request appendPostData:body];
+    [request setDelegate:self];
+    //[request setTimeOutSeconds:3.0];
+    request.shouldAttemptPersistentConnection = NO;
+    [request setDidFinishSelector:@selector(uploadRequestFinished:)];
+    [request setDidFailSelector:@selector(uploadRequestFailed:)];
+    [request startAsynchronous];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissModalViewControllerAnimated:YES];

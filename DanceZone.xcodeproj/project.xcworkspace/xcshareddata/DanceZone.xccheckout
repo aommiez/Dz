@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B45168F3-EB21-4F20-B290-6846AA358039</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DanceZone</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F4953622-2B4D-470A-8088-23D135BB2CCE</key>
+		<string>https://github.com/aommiez/Dz.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DanceZone.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F4953622-2B4D-470A-8088-23D135BB2CCE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aommiez/Dz.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F4953622-2B4D-470A-8088-23D135BB2CCE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4953622-2B4D-470A-8088-23D135BB2CCE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Dz</string>
+		</dict>
+	</array>
+</dict>
+</plist>
