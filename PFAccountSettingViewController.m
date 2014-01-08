@@ -38,7 +38,7 @@ BOOL editMode;
     self.phoneTextField.delegate = self;
     self.emailTextField.delegate = self;
     
-    
+
     UIButton *a2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [a2 setFrame:CGRectMake(0.0f, 0.0f, 40.0f, 30.0f)];
     [a2 addTarget:self action:@selector(editTapped) forControlEvents:UIControlEventTouchUpInside];
@@ -146,6 +146,7 @@ BOOL editMode;
     self.navigationItem.rightBarButtonItem = nil;
     self.editBut.alpha = 1;
     self.navigationItem.leftBarButtonItem = nil;
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -185,10 +186,14 @@ BOOL editMode;
                                       otherButtonTitles:@"Camera", @"Camera Roll", nil];
         [actionSheet showInView:self.view];
     } else {
+        SDImageCache *imageCache = [SDImageCache sharedImageCache];
+        [imageCache clearMemory];
+        [imageCache clearDisk];
+        [imageCache cleanDisk];
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *uid = [defaults objectForKey:@"id"];
         NSString *urlStr = [[[NSString alloc] initWithFormat:@"%@user/%@/picture?display=full",API_URL,uid]autorelease];
-        NSLog(@"%@",urlStr);
         [self.delegate PFAccountSettingViewControllerPhoto:urlStr];
     }
 }
@@ -588,4 +593,26 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
 }
 
+- (IBAction)clearCacheTapped:(id)sender {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *fileList = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+    
+    //--- Listing file by name sort
+    //NSLog(@"\n File list %@",fileList);
+    
+    for(NSString *filePath in fileList){
+        NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
+        NSString *nameId = [[NSString alloc] initWithFormat:@"%@",filePath];
+        NSString *filePathz = [resourceDocPath stringByAppendingPathComponent:nameId];
+        [manager removeItemAtPath:filePathz error:nil];
+    }
+    [[[UIAlertView alloc] initWithTitle:@"Dance Zone"
+                                message:@"Clear cache success"
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+}
 @end

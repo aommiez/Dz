@@ -155,6 +155,7 @@
     [fileManager removeItemAtPath:filePath error:nil];
     self.downloadBut.alpha = 1;
     self.delFile.alpha = 0;
+    
 }
 
 

@@ -49,6 +49,7 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     [FBLoginView class];
+    
     return YES;
 }
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken

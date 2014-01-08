@@ -105,11 +105,15 @@ BOOL refreshDataz;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PFNotificationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell"];
+    cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.bg.image = [UIImage imageNamed:@"NotBoxReadedIp4.png"];
+    
     NSString *type = [[[self.obj objectForKey:@"data"] objectAtIndex:indexPath.row] objectForKey:@"type"];
     //NSLog(@"not id :  %@",[[[self.obj objectForKey:@"data"] objectAtIndex:indexPath.row] objectForKey:@"id"]);
     PFDzApi *dzApi = [[PFDzApi alloc] init];
     [dzApi DzApiReadNotify:[[[self.obj objectForKey:@"data"] objectAtIndex:indexPath.row] objectForKey:@"id"]];
-
+    
     if ( [type isEqualToString:@"showcase"]) {
         if (IS_WIDESCREEN) {
             PFYouTubeViewController *youTubeViewController = [[PFYouTubeViewController alloc] initWithNibName:@"PFYouTubeViewController_Wide" bundle:nil];
@@ -231,7 +235,7 @@ BOOL refreshDataz;
             [request startSynchronous];
             [self.navigationController pushViewController:activitiesDetailViewController animated:YES];
         }
-    } else {
+    }  else {
         NSString *urlString = [[NSString alloc] initWithFormat:@"%@sys_notification/%@",API_URL,[[[self.obj objectForKey:@"data"] objectAtIndex:[indexPath row]] objectForKey:@"object_id"]];
         NSURL *url = [NSURL URLWithString:urlString];
         __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];

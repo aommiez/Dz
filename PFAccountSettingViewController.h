@@ -60,4 +60,9 @@
 @property (nonatomic, strong) GKImagePicker *imagePicker;
 
 @property (nonatomic, strong) UIImagePickerController *ctr;
+
+- (IBAction)clearCacheTapped:(id)sender;
+
+
+
 @end

@@ -18,6 +18,7 @@
 #import "PFActivitiesDetailViewController.h"
 #import "AMBlurView.h"
 #import "PFDzApi.h"
+
 @protocol PFNotificationViewControllerDelegate <NSObject>
 - (void)PFNotificationViewControllerNewsTapped:(id)sender newsId:(NSString *)newsId;
 @end

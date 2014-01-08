@@ -66,6 +66,7 @@ BOOL refreshData;
     [myLabel setText:@"Dance Zone"];
     [self.NavItem setTitleView:myLabel];
 
+    
     UIButton *a1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [a1 setFrame:CGRectMake(0.0f, 0.0f, 25.0f, 25.0f)];
     [a1 addTarget:self action:@selector(accountTapped) forControlEvents:UIControlEventTouchUpInside];
