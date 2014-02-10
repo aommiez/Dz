@@ -126,7 +126,9 @@ BOOL refreshDataz;
                 SBJSON *resultJson = [[[SBJSON alloc]init] autorelease];
                 id resJson = [resultJson objectWithString:[request responseString]];
                 NSDictionary *dict = [[[NSDictionary alloc] initWithDictionary:resJson] autorelease];
+                
                 youTubeViewController.youtubeObj = dict;
+                NSLog(@"%@",dict);
             }];
             [request setFailedBlock:^{
                 //NSError *error = [request error];

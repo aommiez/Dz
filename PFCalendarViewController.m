@@ -203,6 +203,7 @@ BOOL load;
             info.day++;
             d = [NSDate dateWithDateComponents:info];
             if([d compare:end]==NSOrderedDescending) break;
+            NSLog(@"%@",(self.dataDictionary));
         }
     }];
     [request setFailedBlock:^{

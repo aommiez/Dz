@@ -557,7 +557,7 @@ BOOL refreshData;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     float offset = (scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height));
-
+    NSLog(@"%f",offset);
     if (offset >= 0 && offset <= 5) {
         if (!noDataz) {
             refreshData = NO;
@@ -655,7 +655,6 @@ BOOL refreshData;
     [self.tableView reloadData];
     
     if (animated) {
-        
         CATransition *animation = [CATransition animation];
         [animation setType:kCATransitionFade];
         [animation setSubtype:kCATransitionFromBottom];
