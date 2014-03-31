@@ -15,6 +15,7 @@
 #import "PFNewsCommentCell.h"
 #import "PFDzApi.h"
 #import "PFAccountViewController.h"
+
 @protocol PFActivitiesDetailViewControllerDelegate <NSObject>
 - (void)PFActivitiesDetailViewControllerPhoto:(NSString *)link;
 - (void)PFActivitiesDetailViewControllerBack;

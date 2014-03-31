@@ -129,7 +129,7 @@ BOOL load;
     
 }
 - (void)testItem:(NSDate*)start endDate:(NSDate*)end{
-    NSLog(@"Delegate Range: %@ %@ %d",start,end,[start daysBetweenDate:end]);
+    NSLog(@"Delegate Range: %@ %@ %ld",start,end,(long)[start daysBetweenDate:end]);
     self.dateStart = start;
     self.dateEnd = end;
     NSString *startString = [NSDate stringFromDate:start];
@@ -223,7 +223,7 @@ BOOL load;
 	// dataDictionary: has items that are associated with date keys (for tableview)
 	
 	
-	NSLog(@"Delegate Range: %@ %@ %d",start,end,[start daysBetweenDate:end]);
+	NSLog(@"Delegate Range: %@ %@ %ld",start,end,(long)[start daysBetweenDate:end]);
 	
 	self.dataArray = [NSMutableArray array];
 	self.dataDictionary = [NSMutableDictionary dictionary];

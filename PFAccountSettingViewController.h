@@ -43,7 +43,6 @@
 @property (retain, nonatomic) IBOutlet UISwitch *pushNews;
 @property (retain, nonatomic) IBOutlet UISwitch *pushShowcase;
 @property (retain, nonatomic) IBOutlet UISwitch *pushLesson;
-
 @property (retain, nonatomic) IBOutlet UISwitch *pushDancezone;
 
 - (IBAction)newsChanged:(id)sender;
