@@ -100,9 +100,7 @@ NSInteger comCount;
         NSString *commentStr = [[NSString alloc] initWithFormat:@"%d Comments",[[[resJson objectForKey:@"comment"] objectForKey:@"length"] intValue]];
         self.commentLabel.text = commentStr;
         if ( [[[resJson objectForKey:@"like"] objectForKey:@"is_liked"] intValue] == 1 ) {
-            //[self.realLikeBut setBackgroundImage:[UIImage imageNamed:@"LikeBottonOnIp5@2x"] forState:UIControlStateNormal];
             [self.likeBut setBackgroundImage:[UIImage imageNamed:@"LikeBottonOnIp5@2x"] forState:UIControlStateNormal];
-            
         }
         
     }];
