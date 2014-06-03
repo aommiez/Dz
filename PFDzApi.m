@@ -82,7 +82,7 @@
     } else if (![link isEqualToString:@"NO"]) {
         urlStr = [[NSString alloc] initWithFormat:@"%@",link];
     }
-    
+    NSLog(@"%@",urlStr);
     
     NSURL *url = [NSURL URLWithString:urlStr];
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];

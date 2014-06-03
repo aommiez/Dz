@@ -46,11 +46,7 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+
 #pragma mark - private
 - (void)initTabBarViewController{
     
@@ -120,8 +116,6 @@
         
       
     }
-    
-
     
     // 4) define the default selected index
     [self.tabBarViewController setSelectedIndex:0];

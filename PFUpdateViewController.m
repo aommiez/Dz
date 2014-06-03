@@ -611,17 +611,17 @@ BOOL refreshData;
     [super viewWillDisappear:animated];
     //[self.navigationController setNavigationBarHidden:NO animated:YES];
 }
-
+/*
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
 - (BOOL)prefersStatusBarHidden {
     return NO;
-}
+}*/
 #pragma make - Dz API Delegate
 - (void)PFDzApi:(id)sender DzAPiFeedResponse:(NSDictionary *)response {
-  
+    NSLog(@"%@",response);
     if (!refreshData) {
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
             [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];

@@ -65,7 +65,7 @@ NSString *urlImg;
 }
 
 - (void)reloadView {
-    NSString *urlStr = [[NSString alloc] initWithString:@"http://61.19.147.72/api/setting"];
+    NSString *urlStr = [[NSString alloc] initWithString:@"http://dancezone-api.pla2app.com/setting"];
     NSURL *url = [NSURL URLWithString:urlStr];
     
     __block ASIHTTPRequest *requestComment = [ASIHTTPRequest requestWithURL:url];
